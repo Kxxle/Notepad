@@ -47,6 +47,7 @@ namespace Notepad
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
             textBox1.ScrollBars = ScrollBars.Vertical;
+            toolStripStatusLabel1.Text = $"Characters: {textBox1.Text.Length}";
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e)
@@ -149,6 +150,33 @@ namespace Notepad
         {
             PrintDialog printDialog1 = new PrintDialog();
             printDialog1.ShowDialog();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void fontToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FontDialog fontDialog1 = new FontDialog();
+
+            DialogResult dialogResult = fontDialog1.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                Font font = fontDialog1.Font;
+                textBox1.Font = fontDialog1.Font;
+            }
+        }
+
+        private void statusBarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            statusStrip1.Visible = statusBarToolStripMenuItem.Checked;
+        }
+
+        private void toolStripStatusLabel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
